@@ -1,11 +1,3 @@
-//
-//  ZeldaGamesApp.swift
-//  ZeldaGames
-//
-//  Punto de entrada. Crea la base de datos con el modelo FavoriteGame
-//  y se la entrega a toda la app.
-//
-
 import SwiftUI
 import SwiftData
 

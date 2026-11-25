@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  ZeldaGames
-//
-//  Las dos pestanas. Cada pantalla ya trae su propio NavigationStack por dentro.
-//
-
 import SwiftUI
 import SwiftData
 

@@ -1,12 +1,3 @@
-//
-//  GameView.swift
-//  ZeldaGames
-//
-//  Pestana 1: lista de juegos que vienen de la API.
-//  Cada fila: NavigationLink al detalle + corazon para dar like.
-//  En la barra de arriba: boton para dar like a todos.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -44,8 +35,6 @@ struct GameView: View {
 
                             Spacer()
 
-                            // borderless: hace que el corazon reciba su propio toque
-                            // y no dispare el NavigationLink de la fila.
                             Button {
                                 toggleFavorite(game)
                             } label: {
@@ -77,12 +66,10 @@ struct GameView: View {
         }
     }
 
-    // ¿Este juego ya esta guardado? Se compara por id (unico).
     private func esFavorito(_ game: ZeldaResponse.ZeldaGame) -> Bool {
         return !favorites.filter { $0.gameID == game.id }.isEmpty
     }
 
-    // Convierte un juego de la API en un objeto guardable.
     private func makeFavorite(_ game: ZeldaResponse.ZeldaGame) -> FavoriteGame {
         return FavoriteGame(
             gameID: game.id,
@@ -94,7 +81,6 @@ struct GameView: View {
         )
     }
 
-    // Like a un juego; si ya era favorito, lo quita.
     private func toggleFavorite(_ game: ZeldaResponse.ZeldaGame) {
         let matches = favorites.filter { $0.gameID == game.id }
         if matches.isEmpty {
@@ -107,7 +93,6 @@ struct GameView: View {
         guardarCambios()
     }
 
-    // Like a todos los juegos de la lista (los que ya eran favoritos se saltan).
     private func adoptAll() {
         for game in vm.response.data {
             if esFavorito(game) { continue }

@@ -1,11 +1,3 @@
-//
-//  GameDetailView.swift
-//  ZeldaGames
-//
-//  Detalle de un juego. Recibe valores simples (no el tipo de la API),
-//  asi sirve igual para un juego de la API y para uno guardado en favoritos.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -20,8 +12,6 @@ struct GameDetailView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var favorites: [FavoriteGame]
 
-    // La API manda espacios al inicio/final de algunos textos (y a veces
-    // la descripcion es un solo espacio), asi que los limpiamos para mostrarlos.
     private var cleanDescription: String {
         let text = gameDescription.trimmingCharacters(in: .whitespacesAndNewlines)
         if text.isEmpty {

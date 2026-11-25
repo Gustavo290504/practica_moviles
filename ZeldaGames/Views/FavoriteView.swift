@@ -1,11 +1,3 @@
-//
-//  FavoriteView.swift
-//  ZeldaGames
-//
-//  Pestana 2: los juegos que guardaste (SwiftData).
-//  Tocar uno abre su detalle; deslizar una fila lo borra.
-//
-
 import SwiftUI
 import SwiftData
 
