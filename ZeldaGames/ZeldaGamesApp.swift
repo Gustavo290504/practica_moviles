@@ -1,0 +1,33 @@
+//
+//  ZeldaGamesApp.swift
+//  ZeldaGames
+//
+//  Punto de entrada. Crea la base de datos con el modelo FavoriteGame
+//  y se la entrega a toda la app.
+//
+
+import SwiftUI
+import SwiftData
+
+@main
+struct ZeldaGamesApp: App {
+    var sharedModelContainer: ModelContainer = {
+        let schema = Schema([
+            FavoriteGame.self,
+        ])
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+
+        do {
+            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+        } catch {
+            fatalError("Could not create ModelContainer: \(error)")
+        }
+    }()
+
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+        .modelContainer(sharedModelContainer)
+    }
+}
