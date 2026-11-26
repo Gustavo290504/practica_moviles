@@ -3,13 +3,11 @@ import Observation
 
 @MainActor
 @Observable
-final class ZeldaViewModel {
-    var response = ZeldaResponse(success: false, count: -1, data: [])
+final class MonsterViewModel {
+    var response = MonsterResponse(data: [])
 
-    private let limit = 2
-
-    func getGames() async {
-        let endPoint = "https://zelda.fanapis.com/api/games?limit=\(limit)"
+    func getMonsters() async {
+        let endPoint = "https://api.hyrule-compendium.com/v3/compendium/category/monsters"
         guard let apiURL = URL(string: endPoint) else {
             print("Url no valida o no definida")
             return
@@ -32,7 +30,7 @@ final class ZeldaViewModel {
                 return
             }
 
-            let decoded = try JSONDecoder().decode(ZeldaResponse.self, from: data)
+            let decoded = try JSONDecoder().decode(MonsterResponse.self, from: data)
             response = decoded
         } catch {
             print("Error: \(error.localizedDescription)")
